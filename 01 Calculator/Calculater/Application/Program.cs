@@ -11,6 +11,13 @@ namespace Application
         static void Main(string[] args)
         {
             Console.WriteLine("Commence testing!");
+
+            TestAdd();
+        }
+
+        private static void TestAdd()
+        {
+
         }
     }
 }
