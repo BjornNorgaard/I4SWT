@@ -1,4 +1,4 @@
-﻿namespace Calculater
+﻿namespace Application
 {
     public interface ICalculator
     {
@@ -6,5 +6,6 @@
         double Multiply(double a, double b);
         double Power(double x, double exp);
         double Subtract(double a, double b);
+        double Divide(double a, double b);
     }
 }
