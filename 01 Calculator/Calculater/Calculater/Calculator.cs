@@ -2,7 +2,7 @@
 
 namespace Calculater_namespace
 {
-    public class Calculator
+    public class Calculator : ICalculator
     {
         public double Add(double a, double b)
         {
