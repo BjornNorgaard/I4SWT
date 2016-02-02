@@ -1,5 +1,5 @@
 ﻿using System;
-using Calculater_namespace;
+using Calculater;
 
 namespace Application
 {

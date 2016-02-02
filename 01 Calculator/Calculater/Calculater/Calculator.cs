@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Calculater_namespace
+namespace Calculater
 {
     public class Calculator : ICalculator
     {

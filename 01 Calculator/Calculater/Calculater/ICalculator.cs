@@ -1,4 +1,4 @@
-﻿namespace Calculater_namespace
+﻿namespace Calculater
 {
     public interface ICalculator
     {
