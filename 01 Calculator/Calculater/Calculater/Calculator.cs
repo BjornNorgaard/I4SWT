@@ -17,7 +17,7 @@ namespace Application
         {
             if (a == 0 || b == 0)
             {
-                return 0;
+                throw new ArgumentException();
             }
             else
             {
