@@ -19,6 +19,7 @@ namespace Calculator.Test.Unit
         [TestCase(0, 2, 2)]
         [TestCase(-1, 2, 1)]
         [TestCase(0, 0, 0)]
+        [TestCase(7, 3, 10)]
         public void Add_AddTwoNumbers_ReturnsCorrect(double a, double b, double result)
         {
             Assert.That(_uut.Add(a, b), Is.EqualTo(result));
