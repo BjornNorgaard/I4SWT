@@ -55,6 +55,7 @@ namespace Calculator.Test.Unit
         [TestCase(10, 2, 5)]
         [TestCase(-10, 2, -5)]
         [TestCase(3, 2, 1.5)]
+        [TestCase(3, 3, 1)]
         public void Divide_DivideTwoNumbers_ReturnsCorrect(double a, double b, double result)
         {
             Assert.That(_uut.Divide(a, b), Is.EqualTo(result));
