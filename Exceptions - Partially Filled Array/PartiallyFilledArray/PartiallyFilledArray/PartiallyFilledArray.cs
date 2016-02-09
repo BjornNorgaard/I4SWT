@@ -105,8 +105,11 @@ namespace PartiallyFilledArray
                 throw new PFAIndexOutOfBoundsException(pos, _size);
             }
 
-            _array[pos] = -1;
-            _used--;
+            if (_array[pos] != -1)
+            {
+                _array[pos] = -1;
+                _used--;
+            }
         }
     }
 }

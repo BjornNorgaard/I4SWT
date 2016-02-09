@@ -229,7 +229,7 @@ namespace PartiallyFilledArray.Test.Unit
         public void Find_SearchForItemInArray_ReturnsCorrectIndexOfItem(int pos, int data)
         {
             _uut.Set((uint)pos, data);
-            
+
             Assert.That(_uut.Find(data), Is.EqualTo(pos));
         }
 
@@ -249,7 +249,7 @@ namespace PartiallyFilledArray.Test.Unit
                 _uut.Put(i);
             }
 
-            _uut.RemoveAt((uint) pos);
+            _uut.RemoveAt((uint)pos);
 
             Assert.That(_uut.Get((uint)pos), Is.EqualTo(-1));
         }
@@ -261,7 +261,26 @@ namespace PartiallyFilledArray.Test.Unit
         [TestCase(100)]
         public void RemoveAt_RemoveItemOutOfBound_ThrowsPFAIndexOutOfBoundsException(int pos)
         {
-            Assert.Throws<PFAIndexOutOfBoundsException>( () => _uut.RemoveAt((uint)pos));
+            Assert.Throws<PFAIndexOutOfBoundsException>(() => _uut.RemoveAt((uint)pos));
+        }
+
+        [Test]
+        public void RemoveAt_RemoveFromEmptyIndexInBound_UsedIsNotDecremented()
+        {
+            int whatUsedShouldBe = 0;
+
+            _uut.Set(5, 6);
+            whatUsedShouldBe++;
+            _uut.Set(0, 9);
+            whatUsedShouldBe++;
+            _uut.Set(9, 3);
+            whatUsedShouldBe++;
+
+            _uut.RemoveAt(9);
+            whatUsedShouldBe--;
+
+
+            Assert.That(_uut.Used, Is.EqualTo(whatUsedShouldBe));
         }
 
         #endregion

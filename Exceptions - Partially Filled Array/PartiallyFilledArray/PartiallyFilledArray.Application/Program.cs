@@ -34,8 +34,7 @@ namespace PartiallyFilledArray.Application
                 {
                     // Do nothing - choice = 0 is fine
                 }
-
-
+                
                 try
                 {
                     switch (choice)
@@ -90,7 +89,7 @@ namespace PartiallyFilledArray.Application
                             Console.WriteLine("Printing array:");
                             for (int i = 0; i < pfa.Size; i++)
                             {
-                                //Console.Write("P{0}={1}, ",i, pfa.Get((uint)i));
+                                Console.Write("P{0}={1}, ",i, pfa.Get((uint)i));
                             }
                             Console.WriteLine();
                             break;
