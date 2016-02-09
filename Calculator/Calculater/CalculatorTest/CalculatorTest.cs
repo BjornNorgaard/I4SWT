@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Diagnostics.Eventing.Reader;
-using System.Runtime.InteropServices;
+using Calculator.Library;
 
-namespace Application
+namespace Calculator.Manual.Test
 {
     public class CalculatorTest
     {
@@ -70,16 +69,24 @@ namespace Application
 
         public bool DivideTest()
         {
-            if (_calculator.Divide(2, 2) != (2 / 2))
+            try
+            {
+                if (_calculator.Divide(2, 2) != (2 / 2))
+                    return false;
+                if (_calculator.Divide(4, 2) != (4 / 2))
+                    return false;
+                if (_calculator.Divide(-5, 5) != ((-5) / 5))
+                    return false;
+                if (_calculator.Divide(5, 0) != 0)
+                    return false;
+                else
+                    return true;
+            }
+            catch (DivideByZeroException e)
+            {
+                Console.WriteLine("Caught {0}, u done goofed!",e);
                 return false;
-            if (_calculator.Divide(4, 2) != (4 / 2))
-                return false;
-            if (_calculator.Divide(-5, 5) != ((-5) / 5))
-                return false;
-            if (_calculator.Divide(5, 0) != 0)
-                return false;
-            else
-                return true;
+            }
         }
     }
 }

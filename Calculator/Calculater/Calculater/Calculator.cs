@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Application
+namespace Calculator.Library
 {
     public class Calculator : ICalculator
     {
@@ -15,19 +15,16 @@ namespace Application
 
         public double Divide(double a, double b)
         {
-            if (a == 0 || b == 0)
+            if (b == 0)
             {
-                throw new ArgumentException();
+                throw new DivideByZeroException();
             }
-            else
-            {
-                return a/b;
-            }
+            return a / b;
         }
 
         public double Multiply(double a, double b)
         {
-            return a*b;
+            return a * b;
         }
         public double Power(double x, double exp)
         {

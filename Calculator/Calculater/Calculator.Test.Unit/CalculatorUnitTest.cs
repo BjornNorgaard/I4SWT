@@ -1,5 +1,5 @@
 ﻿using System;
-using Application;
+using Calculator.Library;
 using NUnit.Framework;
 
 namespace Calculator.Test.Unit
@@ -12,7 +12,7 @@ namespace Calculator.Test.Unit
         [SetUp]
         public void Setup()
         {
-            _uut = new Application.Calculator();
+            _uut = new Library.Calculator();
         }
 
         [TestCase(1.5, 2, 3.5)]
@@ -63,7 +63,7 @@ namespace Calculator.Test.Unit
         [Test]
         public void Divide_DivideWithZero_ThrowsArgumentException()
         {
-            Assert.Throws<ArgumentException>(() => _uut.Divide(3,0));
+            Assert.Throws<DivideByZeroException>(() => _uut.Divide(3,0));
         }
     }
 }
