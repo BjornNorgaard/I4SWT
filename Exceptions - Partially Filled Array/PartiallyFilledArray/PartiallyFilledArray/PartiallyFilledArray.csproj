@@ -40,7 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PFAIndexOutOfBoundsException.cs" />
     <Compile Include="IPartiallyFilledArray.cs" />
+    <Compile Include="PartiallyFilledArray.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
