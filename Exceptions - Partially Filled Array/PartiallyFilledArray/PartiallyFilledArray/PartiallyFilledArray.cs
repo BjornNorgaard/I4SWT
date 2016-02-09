@@ -39,7 +39,7 @@ namespace PartiallyFilledArray
                 throw new PFAArrayFullException();
             }
 
-            if (pos > _size)
+            if (pos >= _size)
             {
                 throw new PFAIndexOutOfBoundsException(pos, _size);
             }
@@ -50,7 +50,7 @@ namespace PartiallyFilledArray
 
         public int Get(uint pos)
         {
-            if (pos > _size)
+            if (pos >= _size)
             {
                 throw new PFAIndexOutOfBoundsException(pos, _size);
             }
@@ -100,13 +100,9 @@ namespace PartiallyFilledArray
 
         public void RemoveAt(uint pos)
         {
-            if (pos > _size)
+            if (pos >= _size)
             {
                 throw new PFAIndexOutOfBoundsException(pos, _size);
-            }
-            if (_array[pos] == -1)
-            {
-                throw new PFAElementNotInArray();
             }
 
             _array[pos] = -1;

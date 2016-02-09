@@ -90,7 +90,7 @@ namespace PartiallyFilledArray.Application
                             Console.WriteLine("Printing array:");
                             for (int i = 0; i < pfa.Size; i++)
                             {
-                                Console.Write("P{0}={1}, ",i, pfa.Get((uint)i));
+                                //Console.Write("P{0}={1}, ",i, pfa.Get((uint)i));
                             }
                             Console.WriteLine();
                             break;
