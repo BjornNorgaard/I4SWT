@@ -7,14 +7,19 @@ namespace PartiallyFilledArray
         private uint _size;
         private uint _used;
 
-        List<int> list = new List<int>(); 
+        int[] _array;
 
         public PartiallyFilledArray(uint size)
         {
             _size = size;
             _used = 0;
 
-            list.Capacity = (int)_size;
+            _array = new int[10];
+
+            for (int i = 0; i < _size; i++)
+            {
+                _array[i] = -1;
+            }
         }
 
         public uint Size
@@ -39,7 +44,7 @@ namespace PartiallyFilledArray
                 throw new PFAIndexOutOfBoundsException(pos, _size);
             }
 
-            list[(int)pos] = data;
+            _array[pos] = data;
             _used++;
         }
 
@@ -50,31 +55,62 @@ namespace PartiallyFilledArray
                 throw new PFAIndexOutOfBoundsException(pos, _size);
             }
 
-            return list[(int) pos];
+            return _array[pos];
         }
 
         public uint Put(int data)
         {
             // if full array throw exception
+            if (_used >= _size)
+            {
+                throw new PFAArrayFullException();
+            }
 
             // find empty index
-            uint index = 0;
-            // if no empty throw exception
+            int index = 0;
+
+            for (int i = 0; i < _size; i++)
+            {
+                if (_array[i] == -1)
+                {
+                    index = i;
+                    break;
+                }
+            }
 
             // insert element
+            Set((uint)index, data);
 
             // return index of element
-            return index;
+            return (uint)index;
         }
 
         public uint Find(int data)
         {
-            throw new System.NotImplementedException();
+            for (int i = 0; i < _size; i++)
+            {
+                if (_array[i] == data)
+                {
+                    return (uint)i;
+                }
+            }
+
+            throw new PFAElementNotInArray();
         }
 
         public void RemoveAt(uint pos)
         {
-            throw new System.NotImplementedException();
+            if (pos > _size)
+            {
+                throw new PFAIndexOutOfBoundsException(pos, _size);
+            }
+            if (_array[pos] == -1)
+            {
+                throw new PFAElementNotInArray();
+            }
+
+            _array[pos] = -1;
+            _used--;
         }
     }
 }

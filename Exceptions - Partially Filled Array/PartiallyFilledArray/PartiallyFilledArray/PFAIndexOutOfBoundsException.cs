@@ -26,4 +26,6 @@ namespace PartiallyFilledArray
             Pos = pos;
         }
     }
+
+    public class PFAElementNotInArray : Exception { }
 }

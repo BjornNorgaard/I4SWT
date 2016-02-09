@@ -21,7 +21,9 @@ namespace PartiallyFilledArray.Application
                 Console.WriteLine("(5) Put()      put data");
                 Console.WriteLine("(6) Find()     find data");
                 Console.WriteLine("(7) RemoveAt() Remove data from specified entry");
-                Console.WriteLine("(8) Quit");
+                Console.WriteLine("(8) Print Array");
+                Console.WriteLine("(9) Quit");
+                Console.Write("\nChoice: ");
 
                 uint choice = 0;
                 try
@@ -85,6 +87,15 @@ namespace PartiallyFilledArray.Application
                             break;
 
                         case 8:
+                            Console.WriteLine("Printing array:");
+                            for (int i = 0; i < pfa.Size; i++)
+                            {
+                                Console.Write("P{0}={1}, ",i, pfa.Get((uint)i));
+                            }
+                            Console.WriteLine();
+                            break;
+
+                        case 9:
                             cont = false;
                             break;
 
@@ -110,6 +121,7 @@ namespace PartiallyFilledArray.Application
                     Console.WriteLine("Error: General exception caught: {0}", ex.ToString());
                 }
                 Console.WriteLine();
+
             }
         }
     }
