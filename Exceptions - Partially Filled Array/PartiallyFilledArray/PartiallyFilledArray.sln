@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PartiallyFilledArray", "Par
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PartiallyFilledArray.Application", "PartiallyFilledArray.Application\PartiallyFilledArray.Application.csproj", "{1548886B-39C5-4EBA-804D-0BF5D07F09EA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PartiallyFilledArray.Test.Unit", "PartiallyFilledArray.Test.Unit\PartiallyFilledArray.Test.Unit.csproj", "{E2407377-22ED-47B2-B963-86F57FD73F8A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{1548886B-39C5-4EBA-804D-0BF5D07F09EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1548886B-39C5-4EBA-804D-0BF5D07F09EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1548886B-39C5-4EBA-804D-0BF5D07F09EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2407377-22ED-47B2-B963-86F57FD73F8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2407377-22ED-47B2-B963-86F57FD73F8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2407377-22ED-47B2-B963-86F57FD73F8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2407377-22ED-47B2-B963-86F57FD73F8A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
