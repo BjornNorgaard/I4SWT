@@ -105,16 +105,16 @@ namespace PartiallyFilledArray.Test.Unit
 
         #region Testing Set
 
-        [TestCase(1, 2)]
-        [TestCase(1, 4)]
-        [TestCase(5, 54)]
-        [TestCase(8, 9)]
-        [TestCase(9, 88)]
-        public void Set_SetDataInPos_DataIsNowContainedInPos(int pos, int data)
+        [TestCase((uint)1, 2)]
+        [TestCase((uint)1, 4)]
+        [TestCase((uint)5, 54)]
+        [TestCase((uint)8, 9)]
+        [TestCase((uint)9, 88)]
+        public void Set_SetDataInPos_DataIsNowContainedInPos(uint pos, int data)
         {
-            _uut.Set((uint)pos, data);
+            _uut.Set(pos, data);
 
-            Assert.That(_uut.Get((uint)pos), Is.EqualTo(data));
+            Assert.That(_uut.Get(pos), Is.EqualTo(data));
         }
 
         [TestCase(-1, 5)]
