@@ -1,17 +1,13 @@
 \section{Fakes}
 
-\subsection{Hvad er Fakes?}
-En Fake er en falsk version af en klasses dependancy.
-
-\subsection{Hvorfor bruge Fakes?}
-Når vi ønsker at isolere vore UUT fra det system det normalt fungerer i, for at teste det i isolation.
+En Fake er en falsk version af en klasses dependancy. Når vi ønsker at isolere vore UUT\footnote{Unit Under Test.} fra det systemet som det normalt fungerer i, for at teste isoleteret.
 
 \subsection{Hvordan bruges Fakes?}
 
 \begin{itemize}
-	\item Identificer dependencies.
-	\item Insert interfaces for dem
-	\item Inject dependencies ind i UUT. \todo{eksempel}
+	\item Identificér afhængigheder.
+	\item Lav interfaces til dem
+	\item Brug \textit{dependency-injection}\footnote{Constructor- eller propertyinjection.}.
 \end{itemize}
 
 \subsection{Statebaserede tests og Interactionbaserede tests}
