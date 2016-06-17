@@ -9,18 +9,21 @@ Statisk analyse kan bruges til:
 	\item Finde \textit{possible errors}.
 \end{enumerate}
 
-\subsection{Værktøjer} til formålet har vi nogle værktøjer.
+\subsection{Værktøjer} 
+Til formålet har vi nogle værktøjer. 
+
+Da kode analyse kan tage lang tid, ligesom en langsom compilering, vil det ofte være en god ide at gøre det på en CI server.
 
 \subsubsection{FxCop}
 Statisk analyseværktøj, udviklet af Microsoft til Visual Studio. Lavet for at øge performance, sikkerhed og design.
 
 \subsubsection{Compilers}
-Compileren er et eksempel på et Statisk analyseværktøj. Alle moderne compilere viser advarseler og lignende for koden, nogle vigtige, andre not so much.
+Compileren er et eksempel på et Statisk analyseværktøj. Alle moderne compilere viser advarseler og lignende for koden, nogle vigtige, andre - not so much.
 
 \subsubsection{ReSharper}
 Finder også fejl, som ikke nødvendigvis er kritiske. F.eks informere den om inkonsekvent navngivning, ikke initialiserede variabler og helt ubrugte variabler.
 
-\subsection{Quantitative code analysis}
+\subsection{Kvantitativ analyse}
 Aka: Software Metrics. Bruges til at beskrive: 
 
 \begin{itemize}
@@ -51,13 +54,36 @@ Et index som beskriver hvor holdbar og effektiv ens kode er. Samt hvor let den e
 Angiver antallet af \textit{intermediate language} linjer i koden, altså \textbf{ikke} linjer i source koden. Bruges til at indikere om en metode laver for meget og skal deles op i flere mindre methoder.
 
 \subsubsection{Class coupling}
-Beskriver koblingen mellem klasser. Findes ved at kigge på parametre, returtyper, baseklasser, og interface-inplementeringer.
+En \textit{architectural} metric. Beskriver koblingen mellem klasser. Findes ved at kigge på parametre, returtyper, baseklasser, og interface-inplementeringer.
 
 \subsubsection{Depth of inheirtance}
 Angiver hvor mange klasser, der 'hænger' sammen i klassernes arveheiraki. Jo dybere et arveheiraki, desto svære at finde ud af hvor klasserne er defineret. Derved sværer at vedligeholde.
 
+
+
+
+
+
+
 \subsubsection{Cyclomatic Complexity}\label{sec:cyclomatic}
 Bruges til at beskrive kompleksiteten i et program. Det er et kvantitativt mål for antallet af lineære uafhængige vejen gemmet programmets source code.
+
+%Når man har en graf som vist på figur~\ref{fig:cyclomatic}, er følgende udtryk gældende: 
+%
+%\begin{align}
+%E &= NumberOfEdges\\
+%N &= NumberOfNodes\\
+%P &= NumberOfConnectionComponents
+%\end{align}
+%
+%\vskip.3cm
+%
+%Med disse termer kan M (antallet af \textit{decision points}) findes sådan her:
+%
+%\begin{align}
+%M &= E-N+2P\\
+%M&= 9-8+2*1=3
+%\end{align}
 
 \begin{figure}[H]
 	\centering
@@ -78,44 +104,81 @@ public void Method()
 }
 \end{lstlisting}
 
-Når man har en graf som vist på figur~\ref{fig:cyclomatic}, er følgende udtryk gældende: 
+\subsection{Kvalitativ analyse}
+Beskriver kodestil og -standard. Nogle fejl kan man reducere sig frem til, eksempelvis: 
 
-\begin{align}
-E &= NumberOfEdges\\
-N &= NumberOfNodes\\
-P &= NumberOfConnectionComponents
-\end{align}
+\begin{itemize}
+	\item Løse pointere.
+	\item Memory leaks.
+	\item Uinitialiserede variabler.
+\end{itemize}
 
-\vskip.3cm
+\subsection{Dynamisk analyse}
+Til måling under kørsel af programmet. Bruges til at finde: 
 
-Med disse termer kan M (antallet af \textit{decision points}) findes sådan her:
+\subsubsection{Kvalitative}
 
-\begin{align}
-M &= E-N+2P\\
-M&= 9-8+2*1=3
-\end{align}
+\begin{itemize}
+	\item Unhandled exceptions.
+	\item Index errors.
+	\item Null pointers.
+	\item Uninitialized variables.
+	\item Writing outside allocated memory.
+	\item Double deletes.
+	\item Stack overflow
+	\item ...
+\end{itemize}
 
+Når en af de førnævnte ting så finder sted kan følgende bruges til at konstatere nøjagtigt hvorfor:
 
+\begin{itemize}
+	\item Logging/tracing.
+	\item Stack traces.
+	\item Memory dumps.
+	\item Monitoring/instrumentation.
+\end{itemize}
 
+Den nævnte instrumentering kan være \textit{Debug/Release}, \textit{Index check}, \textit{Assert(condition)} mm.
 
+\subsubsection{Kvantitativ}
+Målering af følgende attributter:
 
+\begin{itemize}
+	\item Time.
+	\item CPU cycles.
+	\item Memory footprint.
+	\item OS resources.
+	\item Memory leaks.
+	\item Other bottlenecks (virtual memory vs. physical memory)
+\end{itemize}
 
+\subsubsection{Instrumented vs Sampled}
+Der er flere værktøjer til opgaven, eksempelvis: VS Performance suite, Valgrind (Linux), Dmalloc (C og C++) og GNU gprof profiling. To forskellige måder at måde på:
 
+\paragraph{Instrumented} very intrusive, high impact and precise.
 
+\begin{enumerate}
+	\item Compileren indsætter code for at måle. I hver function og linje.
+	\item Programmet køres og data indsamles.
+	\item Indsamlet data rapporteres.
+\end{enumerate}
 
+\paragraph{Sampled} not intrusive, small impact and medium precise.
 
+\begin{enumerate}
+	\item Compileren genererer et slags 'codemap' for source koden.
+	\item Programmet køres og data indsamles på bestemte tidspunkter.
+	\item Data rapporteres.
+\end{enumerate}
 
+Denne slags analyse er en god kandidat for CI. Lange og tunge byg kan fordelagtigt køres om natten som et \textit{nightly build}.
 
-
-
-
-
-
-
-
-
-
-
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{figs/static_dynamic}
+\caption{Statisk vs. Dynamisk analyse.}
+\label{fig:staticdynamic}
+\end{figure}
 
 
 
