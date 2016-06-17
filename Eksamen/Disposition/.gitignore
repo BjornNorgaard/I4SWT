@@ -210,3 +210,4 @@ FakesAssemblies/
 *.out
 *.pdf
 *.tdo 
+*.db
