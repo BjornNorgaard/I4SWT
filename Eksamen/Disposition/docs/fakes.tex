@@ -72,9 +72,24 @@ Stubbe handler om at teste stadier. Det kan da være en fordel at anvende constr
 \subsection{Mocks}
 Mocks relaterer sig til adfærdsbaserede tests, og ikke ændrer sig selv, men derimod andre. Der assertes derfor på en anden klasse end den selv.
 
-\begin{figure}
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.7\linewidth]{figs/mockTest.PNG}
 \caption{Unit testing med mock}
 \label{fig:mockTest}
 \end{figure}
+
+Da der med Mocks, testes om UUT har gjort de forventede operationer på dens dependencies, bliver mock-klassen nødt til at recorde om operationen er sket.
+
+Procedure for stubbe:
+\begin{itemize}
+	\item Arrange - Opsætning af UUT og dens dependancies.
+	\item Act - Stimuler UUT'en. Få den til at gøre det vi ønsker.
+	\item Assert - Assert på om mock klassen blev interageret med korrekt af UUT.
+\end{itemize}
+
+Det er i modsætning til stubbe, muligt for en mock klasse at få en test til at fejle.
+
+Da en mock skal indeholde nogle recordings er en mock typisk mere tidskrævende at skrive, og samtidig sværere at genbruge.
+
+\todo{Indsæt eksempel på en mock}
