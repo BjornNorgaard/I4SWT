@@ -21,13 +21,29 @@ Compileren er et eksempel på et Statisk analyseværktøj. Alle moderne compiler
 Aka: Software Metrics. Bruges til at beskrive: 
 
 \begin{itemize}
-	\item Lines of code per function/module.
-	\item Cyclomatic complexity (se afsnit~\ref{sec:cyclomatic}).
 	\item Microsoft Maintainability index.
+	\item Cyclomatic complexity (se afsnit~\ref{sec:cyclomatic}).
+	\item Lines of code per function/module.
 \end{itemize}
 
 \subsubsection{Maintainability}
-Et index som beskriver hvor holdbar og effektiv ens kode er. Samt hvor let den er at vedligeholde. Indexet beregnes på følgende måde.
+Et index som beskriver hvor holdbar og effektiv ens kode er. Samt hvor let den er at vedligeholde. Indexet går fra 0-100, hvor 100 er bedst.
+
+\def\arraystretch{1.5}%  1 is the default, change whatever you need
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|l|}
+		\hline
+		\hspace{2cm} \cellcolor{green}& 20-100\\
+		\hline
+		\cellcolor{yellow}& 10-19\\
+		\hline
+		\cellcolor{red}& 0-9\\
+		\hline
+	\end{tabular}
+	\caption{Maintainability index score.}
+\end{table}
+
 
 \subsubsection{Cyclomatic Complexity}\label{sec:cyclomatic}
 Bruges til at beskrive kompleksiteten i et program. Det er et kvantitativt mål for antallet af lineære uafhængige vejen gemmet programmets source code.
