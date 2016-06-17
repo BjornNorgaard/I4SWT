@@ -1,0 +1,24 @@
+\select@language {english}
+\contentsline {section}{\numberline {1}Software Quality Metrics}{1}{section.1}
+\contentsline {subsection}{\numberline {1.1}V\IeC {\ae }rkt\IeC {\o }jer}{1}{subsection.1.1}
+\contentsline {subsubsection}{\numberline {1.1.1}FxCop}{1}{subsubsection.1.1.1}
+\contentsline {subsubsection}{\numberline {1.1.2}Compilers}{1}{subsubsection.1.1.2}
+\contentsline {subsubsection}{\numberline {1.1.3}ReSharper}{1}{subsubsection.1.1.3}
+\contentsline {subsection}{\numberline {1.2}Quantitative code analysis}{1}{subsection.1.2}
+\contentsline {subsubsection}{\numberline {1.2.1}Maintainability}{1}{subsubsection.1.2.1}
+\contentsline {subsubsection}{\numberline {1.2.2}Lines of code}{2}{subsubsection.1.2.2}
+\contentsline {subsubsection}{\numberline {1.2.3}Class coupling}{2}{subsubsection.1.2.3}
+\contentsline {subsubsection}{\numberline {1.2.4}Depth of inheritance}{2}{subsubsection.1.2.4}
+\contentsline {subsubsection}{\numberline {1.2.5}Cyclomatic Complexity}{2}{subsubsection.1.2.5}
+\contentsline {section}{\numberline {2}Test-Driven Development (TDD)}{4}{section.2}
+\contentsline {section}{\numberline {3}Fakes}{5}{section.3}
+\contentsline {subsection}{\numberline {3.1}Hvordan bruges Fakes?}{5}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Statebaserede tests og Interactionbaserede tests}{5}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Stubs}{5}{subsection.3.3}
+\contentsline {subsubsection}{\numberline {3.3.1}Constructor injection}{6}{subsubsection.3.3.1}
+\contentsline {subsection}{\numberline {3.4}Mocks}{7}{subsection.3.4}
+\contentsline {subsection}{\numberline {3.5}Isolation Frameworks}{7}{subsection.3.5}
+\contentsline {section}{\numberline {4}Unit-tests}{8}{section.4}
+\contentsline {section}{\numberline {5}Testkvalitet, Coverage og BVA}{9}{section.5}
+\contentsline {section}{\numberline {6}Integrationstest}{10}{section.6}
+\contentsline {section}{\numberline {7}Continuous Integration}{11}{section.7}
