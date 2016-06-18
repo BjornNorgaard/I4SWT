@@ -10,15 +10,18 @@ En Fake er en falsk version af en klasses dependancy. Når vi ønsker at isolere
 	\item Brug \textit{dependency-injection}\footnote{Constructor- eller propertyinjection.}.
 \end{itemize}
 
-\subsection{Statebaserede tests og Interactionbaserede tests}
+\subsection{Test typer}
 Der findes to typer af Unit tests:
 
-\begin{itemize}
-	\item State-Based - Hvor vi tester om UUT er i det forventede state efter behandling. Fakes til denne type af test er en \textbf{STUB}.
-	\item Interaction-Based - Hvor vi tester om UUT har den ønskede adfærd efter behandling. Her kigges der på UUT's adfærd med dens dependencies. Fakes til denne type af test er en \textbf{MOCK}.
-\end{itemize}
+\paragraph{State-Based tests} vi tester om UUT er i den forventede state efter behandling. Fakes til denne type af test er en \textit{stub}. \\
 
-\subsection{Stubs}
+\textit{''In a state-based test, the assertion is \textbf{ALWAYS} on the UUT, \textbf{NEVER} on the fake(s).}
+
+\paragraph{Interaction-Based} Hvor vi tester om UUT har den ønskede adfærd efter behandling. Her kigges der på UUT's adfærd med dens dependencies. Fakes til denne type af test er en \textit{mock}.\\
+
+\textit{''In a Interaction-based test, the assertion is on the mock, not the UUT.}
+
+\subsubsection{Stubs}
 Stubbe eksisterer kun for at give UUT de dependancies den behøver for at fungere.
 Hvis en klasse Calculator er afhængig af en klasse der kan lave beregninger, kan der laves en stub af denne klasse, der blot returnerer en fastlagt værdi. 
 
@@ -65,7 +68,7 @@ Stubbe handler om at teste stadier. Det kan da være en fordel at anvende constr
 
 \todo{Persketivér til ATM opgaven}
 
-\subsection{Mocks}
+\subsubsection{Mocks}
 Mocks relaterer sig til adfærdsbaserede tests, og ikke ændrer sig selv, men derimod andre. Der assertes derfor på en anden klasse end den selv.
 
 \begin{figure}[H]
