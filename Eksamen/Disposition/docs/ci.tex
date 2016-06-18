@@ -1,6 +1,8 @@
 \section{Continuous Integration}
-En Continous integration server er  en server der kan teste et projekts software samlet.
-Med samlet, menes der at et project repository, som flere programmører \textit{pusher} til, automatisk kan kompilere, integrere og køre softwaren og de skrevne tests. Softwaren bliver altså bygget sammen med den resterende software der allerede findes på build serveren.
+
+CI er en practice hvor udviklere integrere deres arbejde ofte. Ifølge Martin Fowler, gerne mininmum dagligt.
+Hver integration verificeres med en automatisk build og test. På denne måde findes integrationsfejl hurtigt.
+
 
 \begin{figure}[H]
 \centering
@@ -27,6 +29,13 @@ Fordelene ved Continous Integration er:
 	\item Der pushes deployable builds \todo{er det et krav at man kun pusher deployable builds i jenkins?}
 	\item Der kan pushes ofte, så der findes fejl før der skrives meget kode.
 	\item Code metrics/quality er altid opdateret (hvis CI systemet understøtter det).
+\end{itemize}
+
+\subsubsection{Graded builds}
+
+\begin{itemize}
+	\item Continous build.
+	\item Nighly build.
 \end{itemize}
 
 \subsection{CI Systemer}
