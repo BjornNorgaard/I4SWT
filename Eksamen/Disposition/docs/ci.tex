@@ -1,6 +1,6 @@
 \section{Continuous Integration}
-En Continous integration server er  en server der kan teste et projekts software samlet.
-Med samlet, menes der at et project repository, som flere programmører \textit{pusher} til, automatisk kan kompilere, integrere og køre softwaren og de skrevne tests. Softwaren bliver altså bygget sammen med den resterende software der allerede findes på build serveren.
+
+CI er en practice hvor udviklere integrere deres arbejde ofte. Ifølge Martin Fowler, gerne minimumn en gang dagligt. Hver integration verificeres med et automatisk build og test. På denne måde findes integrationsfejl tidligt.
 
 \begin{figure}[H]
 \centering
@@ -9,32 +9,33 @@ Med samlet, menes der at et project repository, som flere programmører \textit{
 \label{fig:ciArch}
 \end{figure}
 
-\subsection{CI funktionalitet}
-På figur~\ref{} ses trigger skevensen for et automatisk \textit{\textbf{build}} og \textit{\textbf{run}}.
-
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.7\linewidth]{figs/ciTriggerSeq.PNG}
+\includegraphics[width=0.8\linewidth]{figs/ciTriggerSeq.PNG}
 \caption{Trigger sekvens for Continous Integration med Git repository.}
 \label{fig:ciTriggerSeq}
 \end{figure}
 
-Fordelene ved Continous Integration er:
+\subsection{CI funktionalitet}
+På figur~\ref{fig:ciTriggerSeq} ses trigger sekvensen for et automatisk \textit{\textbf{build}} og \textit{\textbf{run}}. Nogle af fordelene ved Continous Integration er:
 
 \begin{itemize}
-	\item Hele projektet testes samlet.
-	\item Test sker uden for miljøet - Ved store projekter spares tid.
-	\item Der pushes deployable builds \todo{er det et krav at man kun pusher deployable builds i jenkins?}
-	\item Der kan pushes ofte, så der findes fejl før der skrives meget kode.
+	\item Hele systemet testes samlet.
+	\item Test sker udenfor arbejds-miljøet - Ved store projekter spares tid.
+	\item Løbende integration (skal ikke gøres alt sammen til sidst).
+	\item Der pushes deployable builds.
+	\item Vi kan få tests udført om natten.
+	\item Der kan pushes ofte, så fejl findes tidligt før, ændringen bliver fór stor.
 	\item Code metrics/quality er altid opdateret (hvis CI systemet understøtter det).
 \end{itemize}
 
-\subsection{CI Systemer}
-I SWT arbejdes der med Jenkins serveren. Udover at bygge et software projekt, kører den også tilhørende tests, hvorefter den kan sende en mail om resultatet.
-Jenkins mantra: build, test, result, mail. \todo{Er det en ting det her?}
+\subsection{Jenkins}
+I SWT arbejdes der med Jenkins serveren. Udover at bygge et software projekt, kører den også tilhørende tests, hvorefter den kan sende en mail om resultatet.\\
 
-Derudover er der en stor del funktionalitet i Jenkins. Herunder Code Coverage og Metrics.
+Derudover er der meget funktionalitet i Jenkins. Herunder Code Coverage og Metrics, som er brugt i ATM opgaven. I denne opgave er Jenkins brugt til at køre tre forskellige opgaver, i nævnt rækkefølge som en \textit{pipeline}: 
 
-\todo{lav eksempel med ATM opgaven}
-
-\todo{skriv om Travis og evt. forskelle mellem Jenkins og Travis}
+\begin{enumerate}
+	\item Unittests.
+	\item Integrationstest.
+	\item Metrics.
+\end{enumerate}
