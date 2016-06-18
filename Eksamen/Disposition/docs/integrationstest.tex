@@ -1,9 +1,9 @@
 \section{Integrationstest}
 Integrationstests udføres for at checke om de enkelte software moduler passer sammen. Helt konkret drejer det sig om at finde de komponenter der forårsager \textit{Intercomponent failures}. De fleste interoperability fejl findes ikke med komponent scope testing Det er vigtigt at teste dette før der testes i \textit{system scope}.
 
-I OO programmering kan integrationstest forgå løbende.
+I OO programmering kan integrationstest forgå løbende. Med dette menes at der kan foretages integrationstest for hver iteration. 
 
-\subsection{Intregrationstest strategi}
+\subsection{Forarbejde og strategi}
 
 \begin{itemize}
 	\item Hvilke komponenter er i fokus?
@@ -69,14 +69,24 @@ Der er en del ulemper ved denne integratoinstest model.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.7\linewidth]{figs/bottomUpFlow.PNG}
+\includegraphics[width=0.7\linewidth]{figs/bottomUp.PNG}
 \caption{Illustration af Bottom-Up testing.}
-\label{fig:bottomUpFlow}
+\label{fig:bottomUp}
 \end{figure}
 
 \paragraph{Fordele ved Bottom-Up testing}
 
+\begin{itemize}
+	\item Ingen eller få stubbe (Vi skal ikke fake dependancies).
+	\item Let at dække interfaces på alle niveauer.
+\end{itemize}
+
 \paragraph{Ulemper ved Bottom-Up testing}
+
+\begin{itemize}
+	\item Kræver mange Drivere.
+	\item Udsætter tests af kritiske kontrol interfaces.
+\end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -95,11 +105,24 @@ Der er en del ulemper ved denne integratoinstest model.
 
 \paragraph{Fordele ved Top-Down testing}
 
+\begin{itemize}
+	\item Få Drivere skal skrives.
+	\item Man udsætter ikke testing af kontrol komponenter.
+	\item God til at arbejde samtidigt på HW og SW.
+\end{itemize}
+
 \paragraph{Ulemper ved Top-Down testing}
+
+\begin{itemize}
+	\item Bruger mange stubbe. Et isolation framework gør det dog lettere.
+	\item Svært at repræsentere low-level interfaces i toppen. 
+\end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Collaboration testing}
+Der vælges en "vej" gennem dependancy træet, fra top til bund. Eksempelvis en hel Useer Story eller use case.
+
 
 \begin{itemize}
 	\item I collaboration test tager man en "gren" ad gangen i dependency træet.
@@ -114,11 +137,22 @@ Der er en del ulemper ved denne integratoinstest model.
 
 \paragraph{Fordele ved Collaboration testing}
 
+\begin{itemize}
+	\item Intuitivt - Kan følge use cases/user stories.
+	\item Specielt brugbart et højniveaus system scope test.
+\end{itemize}
+
 \paragraph{Ulemper ved Collaborationp testing}
+
+\begin{itemize}
+	\item Testede komponenter testes ikke enkeltvis.
+\end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Sandwich testing}
+
+Top-down og Bottom-up kombineres
 
 \begin{figure}
 \centering
@@ -129,4 +163,13 @@ Der er en del ulemper ved denne integratoinstest model.
 
 \paragraph{Fordele ved Sandwich testing}
 
+\begin{itemize}
+	\item Man kan bruge både BU og TD hvis det giver mening.
+	\item Mange af ulemperne ved BU og TD fjernes - fx det at rpeæsentere low level moduler top-down, bliver lettere hvis nogen af tests er udført i bunden først.
+\end{itemize}
+
 \paragraph{Ulemper ved Sandwich testing}
+
+\begin{itemize}
+	\item Kræver en stor del planlægning.
+\end{itemize}
