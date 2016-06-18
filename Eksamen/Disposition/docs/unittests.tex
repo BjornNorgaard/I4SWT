@@ -29,17 +29,20 @@ Vi bruger testframeworket NUnit. NUnit giver bla. mulighed for:
 	\item At nemt indsætte nye tests i systemet.
 \end{itemize}
 
-I NUnit bruges nogle attributter, herunder:
+\subsubsection{NUnit attributter}
 
-\begin{itemize}
-	\item \[TestFixture\] - Indikerer en klasse der indeholder automatiserede NUnit tests. 
-	\item \[Test\] - Indikerer en enkelt automatiseret test.
-\end{itemize}
+\paragraph{[TestFixture]} Indikerer en klasse der indeholder automatiserede NUnit tests. 
+\paragraph{[Test]} Indikerer en enkelt automatiseret test.
 
-Der er nogle konventioner man følger når man navngiver sine testmetoder.
+\subsubsection{Naming conventions}
+Der er nogle konventioner man følger når testmetoder skal navngives, demonstreret i Code listing~\ref{code:namingconvention}.
 
-\begin{lstlisting}
-public void NameofUUT_NameOfMethodBeingTested_ExpectedOutcome()
+\begin{lstlisting}[caption=Eksempel på navngivnings konvention for test.,label=code:namingconvention]
+[Test]
+public void NameOfMethod_FunctionalityToBetested_ExpectedOutcome()
+{
+	// assert something here...
+}
 \end{lstlisting}
 
 Når der skrives en Unittest, følger man typisk de tre A'er.
@@ -53,7 +56,7 @@ Når der skrives en Unittest, følger man typisk de tre A'er.
 \subsubsection{Parametiserede tests}
 I NUnit er der mulighed for at at bruge parametiserede tests. Dette er nyttigt hvis man ønsker at køre samme test med flere forskellige parametre. I stedet for at bruge \textbf{Test} attributten, bruges \textbf{TestCase(param1, param2)} attrbutten.
 
-\begin{figure}
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.7\linewidth]{figs/testFixture.PNG}
 \caption{Syntaks for unittesting i NUnit}
