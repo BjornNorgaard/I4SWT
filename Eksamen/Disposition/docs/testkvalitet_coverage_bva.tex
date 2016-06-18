@@ -2,6 +2,40 @@
 
 Man kan skrive tusindvis af test, men antallet af tests betyder ikke at systemet er bedre testet. 
 
-Når tests skal skrives vil vi gerne gøre det på den mest effektive måde. Vi vil gerne være hurtigt færdige og samtidigt vide at alt er testet.
+Når tests skal skrives vil vi gerne gøre det på den mest effektive måde. Vi vil gerne være hurtigt færdige og samtidigt vide at alt er testet.\\
 
-Til dette bruger vi diverse former for 
+Til dette bruger vi diverse former for \textit{coverage} og \textit{boundary value analyser}.
+
+\subsection{Coverage}
+Er en structural test-teknik, som kan bruges ved både unit- og integrationstest. Der findes fire typer:
+
+\subsubsection{Function coverage} 
+Ser om alle metoder er kørt under test.
+
+\subsubsection{Statement/Line coverage} 
+Er alle statements blevet eksekveret (return, call, assignment)? 
+
+\begin{align}
+	Line Coverage \% = \frac{Source Lines Reached By Test}{Lines Of Source Code}
+\end{align}
+
+Ulempen ved dette er at testen er \textit{whitebox}. Yderligere er den insensitiv overfor kontrolstrukture, den tester altså ikke om begge scenarier af et if-statement bliver kørt.
+
+\subsubsection{Branch/Decision coverage}
+Er alle branches blevet kørt? Er alle \textit{boolean}'s blevet evalueret til både \textit{true} og \textit{false} i f.eks. while, switch og if? Altså om systemet er testet ud af ''alle stier''.
+
+\subsubsection{Condition coverage}
+Beskriver hvorvidt alle \textit{boolean sub-expressions} er evalueret til både \textit{true} og \textit{false}. I Code listing~\ref{code:coverage} er $x > 0$ og $y > 0$ eksempler på \textit{sub-expressions}.
+
+\begin{lstlisting}[caption=Eksempel vis div. coverage typer.,label=code:coverage]
+int Foo(int x, int y)
+{
+	int z = 0;	
+	if( x > 0 && y > 0)
+	{
+		z = x;
+	}
+	
+	return z;
+}
+\end{lstlisting}
