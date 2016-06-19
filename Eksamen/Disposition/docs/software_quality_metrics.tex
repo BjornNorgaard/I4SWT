@@ -18,23 +18,23 @@ Da kode analyse kan tage lang tid, ligesom en langsom compilering, vil det ofte 
 Statisk analyseværktøj, udviklet af Microsoft til Visual Studio. Lavet for at øge performance, sikkerhed og design.
 
 \subsubsection{Compilers}
-Compileren er et eksempel på et Statisk analyseværktøj. Alle moderne compilere viser advarseler og lignende for koden, nogle vigtige, andre - not so much.
+Compileren er et eksempel på et Statisk analyseværktøj. Alle moderne compilere viser advarseler og lignende for koden, nogle vigtige, andre - not so much. Intellisense i Visual Studio er et statisk analyseværktøj
 
 \subsubsection{ReSharper}
 Finder også fejl, som ikke nødvendigvis er kritiske. F.eks informerer den om inkonsekvent navngivning, ikke initialiserede variabler og helt ubrugte variabler.
 
 \subsection{Statisk analyse}
 Statisk analyse er en analyse af programmet uden at køre det.
+
 \subsubsection{Kvantitativ analyse}
 Aka: Software Metrics. Bruges til at beskrive: 
-
 \begin{itemize}
 	\item Microsoft Maintainability index.
 	\item Cyclomatic complexity (se afsnit~\ref{sec:cyclomatic}).
 	\item Lines of code per function/module.
 \end{itemize}
 
-\paragraph{Maintainability}
+\paragraph{MS Maintainability Index}
 Et index som beskriver hvor holdbar og effektiv ens kode er. Samt hvor let den er at vedligeholde. Indexet går fra 0-100, hvor 100 er bedst.
 
 \def\arraystretch{1.5}%  1 is the default, change whatever you need
@@ -53,7 +53,7 @@ Et index som beskriver hvor holdbar og effektiv ens kode er. Samt hvor let den e
 \end{table}
 
 \paragraph{Lines of code}
-Angiver antallet af \textit{intermediate language}\todo{hvorfor IL?} linjer i koden, altså \textbf{ikke} linjer i source koden. Bruges til at indikere om en metode laver for meget og skal deles op i flere mindre methoder.
+Angiver antallet af \textit{intermediate language} linjer i koden, altså \textbf{ikke} linjer i source koden. Bruges til at indikere om en metode laver for meget og skal deles op i flere mindre methoder.
 
 \paragraph{Class coupling}
 En \textit{architectural} metric. Beskriver koblingen mellem klasser. Findes ved at kigge på parametre, returtyper, baseklasser, og interface-inplementeringer.
@@ -62,24 +62,24 @@ En \textit{architectural} metric. Beskriver koblingen mellem klasser. Findes ved
 Angiver hvor mange klasser, der 'hænger' sammen i klassernes arveheiraki. Jo dybere et arveheiraki, desto svære at finde ud af hvor klasserne er defineret. Derved sværere at vedligeholde.
 
 \paragraph{Cyclomatic Complexity}\label{sec:cyclomatic}
-Bruges til at beskrive kompleksiteten i et program. Det er et kvantitativt mål for antallet af lineære uafhængige vejen gemmet programmets source code.
+Bruges til at beskrive kompleksiteten i et program. Det er et kvantitativt mål for antallet af lineære uafhængige veje gemmen programmets source code.
 
-%Når man har en graf som vist på figur~\ref{fig:cyclomatic}, er følgende udtryk gældende: 
-%
-%\begin{align}
-%E &= NumberOfEdges\\
-%N &= NumberOfNodes\\
-%P &= NumberOfConnectionComponents
-%\end{align}
-%
-%\vskip.3cm
-%
-%Med disse termer kan M (antallet af \textit{decision points}) findes sådan her:
-%
-%\begin{align}
-%M &= E-N+2P\\
-%M&= 9-8+2*1=3
-%\end{align}
+Når man har en graf som vist på figur~\ref{fig:cyclomatic}, er følgende udtryk gældende: 
+
+\begin{align}
+E &= NumberOfEdges\\
+N &= NumberOfNodes\\
+P &= NumberOfConnectionComponents
+\end{align}
+
+\vskip.3cm
+
+Med disse termer kan M (antallet af \textit{decision points}) findes sådan her:
+
+\begin{align}
+M &= E-N+2P\\
+M&= 9-8+2*1=3
+\end{align}
 
 \begin{figure}[H]
 	\centering
@@ -87,6 +87,10 @@ Bruges til at beskrive kompleksiteten i et program. Det er et kvantitativt mål 
 	\caption{Grafisk fremstiling af den cyclomatiske complexity i code listing~\ref{code:cyclomatic}.}
 	\label{fig:cyclomatic}
 \end{figure}
+
+Ved software test er dette brugbart idet det giver et minimum for hvor mange testcases der er nødvendige for at få fuld test coverage.
+
+For at forbedre sin cyklomatiske kompleksitet, kan man refaktuere sin kode til subfunctions og sub classes.
 
 \begin{lstlisting}[caption=Kode for eksempel vist på figur~\ref{fig:cyclomatic}.,label=code:cyclomatic]
 public void Method()
