@@ -9,7 +9,7 @@ At teste ved at lave udskrifter i consolen er dumt, så nu laver vi unit tests. 
 
 \paragraph{En god Unittest}
 \begin{itemize}
-	\item Automatiseret og 'gentagelig'.
+	\item Automatiseret og gentagelig.
 	\item Skal køre hurtigt.
 	\item Skal kunne køres blot ved hjælp af et tryk på en knap.
 	\item Skal køre isoleret fra andre tests.
@@ -28,7 +28,7 @@ To grundlæggende forskellige måder at teste på:
 
 Det er vigtigt at vi tester systemet, ''set udefra'', så vores test ikke bliver afhængige af implementeringen. Eksempelvis er det en dårlig ide at gøre variabler og lignende \textit{public} for at kunne teste dem.
 
-\subsection{Hvordan Unittester vi?}
+\subsection{Hvordan unittester vi?}
 Vi bruger testframeworket NUnit, hvilket giver mulighed for:
 
 \begin{itemize}
@@ -37,25 +37,6 @@ Vi bruger testframeworket NUnit, hvilket giver mulighed for:
 	\item At nemt indsætte nye tests i systemet.
 \end{itemize}
 
-\subsubsection{The Green Zone}
-Adskil unittests fra andre komplicerede test, f.eks: integrationstest. Ved at lave denne seperation kan unittest i denne zone køres hurtigt og derved køres de oftere. Ved at have en \textit{safe \textcolor{green!80!black}{green} zone} får udviklere et sted hvor:
-
-\begin{itemize}
-	\item Only unittests are contained.
-	\item They know that they can get the latest code version.
-	\item They can run all tests in that namespace or folder, and they should all be green.
-\end{itemize}
-
-Hvis en test i \textit{the green zone} fejler, har man et problem.
-
-\paragraph{Opsætning af unittest} Når der skrives en Unittest, følger man typisk de tre A'er.
-
-\begin{enumerate}
-	\item Arrange - Instantiering af UUT objekt.
-	\item Act - Stimuler UUT til at gøre det vi ønsker - \textit{result = \_uut.Method()}.
-	\item Assert - Assertion på om vi får det forventede resultat. \textit{Assert.False(result)}.
-\end{enumerate}
-
 \subsubsection{NUnit attributter}
 NUnit bruger en række 'tags' som indikerer hvordan den skal udføre de skreve test. Nogle af disse er vist i tabel~\ref{tab:nunit}.
 
@@ -63,7 +44,7 @@ NUnit bruger en række 'tags' som indikerer hvordan den skal udføre de skreve t
 	\centering
 	\begin{tabular}{ll}
 		\toprule
-		\rowcolor{Black!5} \textbf{Attribut}& 	\textbf{Beskrivelse}\\ \midrule
+		\textbf{Attribut}& 	\textbf{Beskrivelse}\\ \midrule
 		TestFixture	&	En klasse der indeholder automatiserede NUnit tests. \\
 		SetUp		&	Køres hver gang en test i samme TestFixture køres.\\
 		TearDown	&	Køres hver gang en test i samme TestFixture er afsluttet.\\
@@ -75,6 +56,14 @@ NUnit bruger en række 'tags' som indikerer hvordan den skal udføre de skreve t
 \end{table}
 
 Yderligere er der nogle konventioner man følger når testmetoder skal navngives, demonstreret på linje 15 i Code listing~\ref{code:nunit}.
+
+\paragraph{Opsætning af unittest} Når der skrives en Unittest, følger man typisk de tre A'er.
+
+\begin{enumerate}
+	\item Arrange - Instantiering af UUT objekt.
+	\item Act - Stimuler UUT til at gøre det vi ønsker - \textit{result = \_uut.Method()}.
+	\item Assert - Assertion på om vi får det forventede resultat. \textit{Assert.False(result)}.
+\end{enumerate}
 
 \begin{lstlisting}[caption=NUnit eksempel på Setup og Teardown.,label=code:nunit]
 [TestFixture]
@@ -106,6 +95,17 @@ public class MyClassUnittest {
 %\caption{Syntaks for unittesting i NUnit}
 %\label{fig:testFixture}
 %\end{figure}
+
+\subsubsection{The Green Zone}
+Adskil unittests fra andre komplicerede test, f.eks: integrationstest. Ved at lave denne seperation kan unittest i denne zone køres hurtigt og derved køres de oftere. Ved at have en \textit{safe \textcolor{green!80!black}{green} zone} får udviklere et sted hvor:
+
+\begin{itemize}
+	\item Only unittests are contained.
+	\item They know that they can get the latest code version.
+	\item They can run all tests in that namespace or folder, and they should all be green.
+\end{itemize}
+
+Hvis en test i \textit{the green zone} fejler, har man et problem.
 
 \subsection{Assertion models}
 Der findes to typiske måder at asserte på. Den ene kaldes den klassiske model og den anden kaldes Constraint baseret. I NUnit 3.0 er assertions primært skrevet med den contraint-baserede model, som tager et \textit{constaint object}, eksempelvis \textit{Is.EqualTo()} som argument.

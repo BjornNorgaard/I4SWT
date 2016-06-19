@@ -1,8 +1,6 @@
 \section{Fakes}
 
-En Fake er en falsk version af en klasses dependancy.
-
-Fakes kan bruges når vi ønsker at isolere vore UUT\footnote{Unit Under Test.} fra det systemet som det normalt fungerer i, for at teste isoleteret.
+En Fake er en falsk version af en klasses dependancy. Fakes kan bruges når vi ønsker at isolere vores UUT\footnote{Unit Under Test.} fra det systemet som det normalt fungerer i, for at teste isoleteret.
 
 Samtidig kan fakes også bruges i tilfælde af vores dependancies endnu ikke er implementeret.
 
@@ -115,7 +113,7 @@ public class FakeWebService : IWebService
 
 \subsection{Isolation Frameworks}
 
-NSubstitute er et isolation framework, som kan oprette fakes på baggrund af interfaces. I NSubstitute kan vi asserte på resultat af et funktionskald (Stubs) eller om en funktion i en mock er blevet kaldt med recieved.
+NSubstitute er et isolation framework, som kan oprette fakes på baggrund af interfaces. I NSubstitute kan vi asserte på resultat af et funktionskald (Stubs) eller om en funktion i en mock er blevet kaldt med \textit{recieved()}.
 
 \subsubsection{Brug af NSubstitute}
 
