@@ -2,6 +2,19 @@
 
 TDD er en udviklignsmetode hvor man skriver sine test \textbf{først}, ser denne test fejle. Derefter implementeres den mindst mulige funktionalitet til at få testen til gå godt.
 
+\subsection{How To TDD}
+Projektets krav laves til specifikke test-cases, hvorefter softwaren forbedres til at bestå disse tests. På denne måde tilføjes der ikke software der ikke overholder prjektets krav.
+
+\subsubsection{TDD cyclus}
+\begin{itemize}
+	\item Tiløj en test - Udvikleren tvinges derfor til at forstå kravene fuldt ud.
+	\item Kør tests og se dem fejle. Hvis de ikke fejler, skal de skrives om.
+	\item Skriv koden - Skriv kode som kun lige kan få testen til at bestå.
+	\item Kør tests - Hvis testene fejler skrives koden om, ellers fortsættes der til næste punkt.
+	\item Refaktuer koden - Den nuværende kode kan være uperfekt og skrives derfor om. Fjern duplicates, brug design patterns osv.
+	\item Repeat.
+\end{itemize}
+
 \begin{figure}[h]
 \centering
 \includegraphics[width=\linewidth]{figs/tdd}
@@ -29,6 +42,16 @@ Fordelen ved dette skulle gerne være at man er tvunget til at skrive \textbf{bl
 \caption{Red-Green-Refactor. Fejl, Implementer, refactor.}
 \label{fig:redgreen}
 \end{figure}
+
+\subsubsection{Bug Squashing}
+
+\begin{itemize}
+	\item Lav en test der checker for bug.
+	\item Kør testen og se at buggen er der.
+	\item Ret buggen.
+	\item Kør testen og se at buggen er væk.
+	\item Refaktuer efter behov.
+\end{itemize}
 
 \subsection{Fordele og Ulemper}
 
