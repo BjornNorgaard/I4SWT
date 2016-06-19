@@ -118,16 +118,44 @@ public class FakeWebService : IWebService
 NSubstitute er et isolation framework, som kan oprette fakes på baggrund af interfaces. I NSubstitute kan vi asserte på resultat af et funktionskald (Stubs) eller om en funktion i en mock er blevet kaldt med recieved.
 
 \subsubsection{Brug af NSubstitute}
-\begin{lstlisting}
-// Create
-var calculator = Substitute.For<ICalculator>();
 
-//Return value
-calculator.Add(1,2).Returns(3)
-Assert.AreEqual(3, calculator.add(1,2));
+Eksemplet i Code listing~\ref{code:nsub} bruger \textit{Calculator} et interface til \textit{IAdditionCalculator}, som står for addering af tal.\\
 
-//Recieved calls
-calculator.Recieved().Add(1, Arg.Any<int>());
-calculator.DidNotRecieve().Add(2,2);
+Eksemplet viser en \textbf{adfærdsbaseret test} (linjer 15-21) hvor vi \textit{asserter} implicit på vores \textbf{mock}, \textit{\_fakeAdditionCalculator}.\\
 
+I linjerne 23-30 bruges den samme fake til \textbf{tilstandsbaseret test}, da selve \textit{assert} sker på \textit{\_uut}.
+
+\vskip.3cm
+
+\begin{lstlisting}[caption=Eksempel på fakes med NSubstitute.,label=code:nsub,morekeywords={Calculator,IAdditionCalculator}]
+[TestFixture]
+public class CoolCalculatorTestUnit
+{
+	Calculator _uut;
+	private IAdditionCalculator _fakeAdditionCalculator;
+	
+	[SetUp]
+	public void Setup()
+	{
+		// setup af fake
+		_fakeAdditionCalculator = Substitute.For<IAdditionCalculator>();
+		_uut = new Calculator(_fakeAdditionCalculator);
+	}
+	
+	[Test]
+	public void Add_Adding1And2_SubclassReceivedCall()
+	{
+		// fake bruges som mock
+		_uut.Add(1,2);
+		_fakeAdditionCalculator.Received().Add(1, Arg.Any<int>());
+	}
+	
+	[Test]
+	public void Add_Adding1And2_Returns3()
+	{
+		// fake bruges som stub
+		_fakeAdditionCalculator.Add(1, 2).Returns(3);
+		Assert.That(_uut.Add(1, 2), Is.EqualTo(3));
+	}
+}
 \end{lstlisting}
