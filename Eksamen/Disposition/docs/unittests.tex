@@ -1,41 +1,75 @@
-\section{Unit-tests}
-At Unitteste er at teste enkelte moduler i koden. Vi tester vores kode for at fange eventuelle bugs og mangler på et tidligt stadie. Når man skriver sine tests, tvinges man samtidig til at tænke mere over det stykke kode man har skrevet.
+\section{Unit tests}
+At teste ved at lave udskrifter i consolen er dumt, så nu laver vi unit tests. En unittest er en test af et enkelt modul i koden. Vi tester vores kode for at fange fejl på et tidligt stadie. Når man skriver tests, tvinges man samtidig til at tænke mere over koden man har skrevet.
 
-\subsection{Terminologi}
 \begin{itemize}
-	\item Unit test - Et stykke kode, typisk en metode, der bruger et andet stykke kode for at teste nogen antagelsers korrekthed.
-	\item Unit - En metode.
-	\item System Under Test - Det system man tester på.
+	\item \textbf{Unit test} - Et stykke kode, typisk en metode, der bruger et andet stykke kode for at teste nogen antagelsers korrekthed.
+	\item \textbf{Unit} - En metode.
+	\item \textbf{System Under Test} - Det system man tester på.
 \end{itemize}
 
 \subsection{En god Unittest}
 \begin{itemize}
-	\item Automatiseret og repeatable.
-	\item kan ogaå bruges i morgen.
-	\item Skal kunne køres blot ved hjælp af et tryk på en knap.
+	\item Automatiseret og 'gentagelig'.
 	\item Skal køre hurtigt.
-	\item Skal producere samme resultat hver gang.
+	\item Skal kunne køres blot ved hjælp af et tryk på en knap.
 	\item Skal køre isoleret fra andre tests.
-	\item Ved fejl skal det tydeligt fremgå hvad der er galt.
+	\item Ved fejl skal det tydeligt fremgå hvad der er gået galt.
 \end{itemize}
 
 \subsection{Hvordan Unittester vi?}
 
-Vi bruger testframeworket NUnit. NUnit giver bla. mulighed for:
+Vi bruger testframeworket NUnit, hvilket giver mulighed for:
 
 \begin{itemize}
 	\item Detaljerede fejlrapporter - Beskriver hvorfor en test fejler.
-	\item Setup og teardown, se figur~\ref{fig:testFixture}
+	\item Setup og teardown, se Code listing~\ref{code:nunit}.
 	\item At nemt indsætte nye tests i systemet.
 \end{itemize}
 
-\subsubsection{NUnit attributter}
+\begin{lstlisting}[caption=NUnit eksempel på Setup og Teardown.,label=code:nunit]
+[TestFixture]
+public class MyClassUnittest {
 
-\paragraph{[TestFixture]} Indikerer en klasse der indeholder automatiserede NUnit tests. 
-\paragraph{[Test]} Indikerer en enkelt automatiseret test.
-\paragraph{[TestCase]} Indikerer en test med parametre.
-\paragraph{[SetUp]} Indikerer en SetUp metode. Køres hver gang en test i samme TestFixture køres.
-\paragraph{[TearDown]} Indikerer en TearDown metode. Køres hver gang en test i samme TestFixture er afsluttet. Bruges til at nulstille.
+	[SetUp]
+	public void Setup() {
+		// happens before each test
+	}
+	
+	[TearDown]
+	public void Teardown() {
+		// happens after each test
+	}
+	
+	[Test]
+	public void MethodName_WhatTotestFor_ExpectedResult() {
+		// assert something here
+	}
+}
+\end{lstlisting}
+
+\subsubsection{NUnit attributter}
+NUnit bruger en række 'tags' som indikerer hvordan den skal udføre de skreve test. Nogle af disse er vist i tabel~\ref{tab:nunit}.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{ll}
+		\toprule
+		\rowcolor{Black!5} \textbf{Attribut}& 	\textbf{Beskrivelse}\\ \midrule
+		TestFixture	&	En klasse der indeholder automatiserede NUnit tests. \\
+		SetUp		&	Køres hver gang en test i samme TestFixture køres.\\
+		TearDown	&	Køres hver gang en test i samme TestFixture er afsluttet.\\
+		Test		&	En enkelt automatiseret test.\\
+		TestCase()	&	En test med parametre.\\ \bottomrule
+	\end{tabular}
+	\caption{NUnit's attributter (tags).}
+	\label{tab:nunit}
+\end{table}
+
+%\paragraph{[TestFixture]} Indikerer en klasse der indeholder automatiserede NUnit tests. 
+%\paragraph{[Test]} Indikerer en enkelt automatiseret test.
+%\paragraph{[TestCase]} Indikerer en test med parametre.
+%\paragraph{[SetUp]} Indikerer en SetUp metode. Køres hver gang en test i samme TestFixture køres.
+%\paragraph{[TearDown]} Indikerer en TearDown metode. Køres hver gang en test i samme TestFixture er afsluttet. Bruges til at nulstille.
 
 \subsubsection{Naming conventions}
 Der er nogle konventioner man følger når testmetoder skal navngives, demonstreret i Code listing~\ref{code:namingconvention}.
@@ -59,20 +93,20 @@ Når der skrives en Unittest, følger man typisk de tre A'er.
 \subsubsection{Parametiserede tests}
 I NUnit er der mulighed for at at bruge parametiserede tests. Dette er nyttigt hvis man ønsker at køre samme test med flere forskellige parametre. I stedet for at bruge \textbf{Test} attributten, bruges \textbf{TestCase(param1, param2)} attrbutten.
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.7\linewidth]{figs/testFixture.PNG}
-\caption{Syntaks for unittesting i NUnit}
-\label{fig:testFixture}
-\end{figure}
+%\begin{figure}[H]
+%\centering
+%\includegraphics[width=0.7\linewidth]{figs/testFixture.PNG}
+%\caption{Syntaks for unittesting i NUnit}
+%\label{fig:testFixture}
+%\end{figure}
 
 \subsection{Assertion models}
 Der findes to typiske måder at asserte på. Den ene kaldes den klassiske model og den anden kaldes Constraint baseret.
 
 Den klassiske assert anvender AreEqual metoden. Denne tager to parametre, en værdi samt metoden som ønskes testet - her om den returnerer den korrekte værdi.
-\begin{figure}
+\begin{figure}[H]
 \centering
-\includegraphics[width=0.7\linewidth]{figs/classicAssert.PNG}
+\includegraphics[width=0.45\linewidth]{figs/classicAssert.PNG}
 \caption{Classic Assert model}
 \label{fig:classicAssert}
 \end{figure}
