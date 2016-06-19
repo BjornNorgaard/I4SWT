@@ -1,0 +1,18 @@
+\select@language {english}
+\contentsline {figure}{\numberline {1}{\ignorespaces Grafisk fremstiling af den cyclomatiske complexity i code listing~\ref {code:cyclomatic}.\relax }}{2}{figure.caption.10}
+\contentsline {figure}{\numberline {2}{\ignorespaces Tre forskellige statements som graf.\relax }}{3}{figure.caption.11}
+\contentsline {figure}{\numberline {3}{\ignorespaces Statisk vs. Dynamisk analyse.\relax }}{5}{figure.caption.14}
+\contentsline {figure}{\numberline {4}{\ignorespaces Red-Green-Refactor mamtra med TDD.\relax }}{6}{figure.caption.15}
+\contentsline {figure}{\numberline {5}{\ignorespaces Red-Green-Refactor. Fejl, Implementer, refactor.\relax }}{7}{figure.caption.16}
+\contentsline {figure}{\numberline {6}{\ignorespaces Afh\IeC {\ae }ngighed - DIP ikke opfyldt.\relax }}{9}{figure.caption.21}
+\contentsline {figure}{\numberline {7}{\ignorespaces Klassediagram for brug af stub.\relax }}{9}{figure.caption.22}
+\contentsline {figure}{\numberline {8}{\ignorespaces Unit testing med mock\relax }}{10}{figure.caption.24}
+\contentsline {figure}{\numberline {9}{\ignorespaces Classic Assert model\relax }}{14}{figure.caption.27}
+\contentsline {figure}{\numberline {10}{\ignorespaces Equivalence partitions, for \textit {IsPositive()}.\relax }}{16}{figure.caption.28}
+\contentsline {figure}{\numberline {11}{\ignorespaces Uddrag fra ATM's dependancy model\relax }}{19}{figure.caption.30}
+\contentsline {figure}{\numberline {12}{\ignorespaces Illustration af Bottom-Up testing.\relax }}{20}{figure.caption.34}
+\contentsline {figure}{\numberline {13}{\ignorespaces Illustration af Top-Down testing.\relax }}{21}{figure.caption.37}
+\contentsline {figure}{\numberline {14}{\ignorespaces Illustration af Collaboration testing.\relax }}{21}{figure.caption.40}
+\contentsline {figure}{\numberline {15}{\ignorespaces Illustration af Sandwich testing.\relax }}{22}{figure.caption.43}
+\contentsline {figure}{\numberline {16}{\ignorespaces Modellen for Continous Integration i et projekt\relax }}{23}{figure.caption.46}
+\contentsline {figure}{\numberline {17}{\ignorespaces Trigger sekvens for Continous Integration med Git repository.\relax }}{23}{figure.caption.47}

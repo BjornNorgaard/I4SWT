@@ -13,7 +13,7 @@ namespace CoolCalculator.Test.Unit
     {
         Calculator _uut;
         private IAdditionCalculator _fakeAdditionCalculator;
-
+        
         [SetUp]
         public void Setup()
         {
