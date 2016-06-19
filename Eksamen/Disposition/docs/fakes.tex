@@ -129,7 +129,7 @@ I linjerne 23-30 bruges den samme fake til \textbf{tilstandsbaseret test}, da se
 
 \begin{lstlisting}[caption=Eksempel på fakes med NSubstitute.,label=code:nsub,morekeywords={Calculator,IAdditionCalculator}]
 [TestFixture]
-public class CoolCalculatorTestUnit
+public class CalculatorTestUnit
 {
 	Calculator _uut;
 	private IAdditionCalculator _fakeAdditionCalculator;
@@ -145,7 +145,7 @@ public class CoolCalculatorTestUnit
 	[Test]
 	public void Add_Adding1And2_SubclassReceivedCall()
 	{
-		// fake bruges som mock
+		// fake bruges som mock, med implicit assertion
 		_uut.Add(1,2);
 		_fakeAdditionCalculator.Received().Add(1, Arg.Any<int>());
 	}
