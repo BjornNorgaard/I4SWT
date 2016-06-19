@@ -116,3 +116,8 @@ public class FakeWebService : IWebService
 \subsection{Isolation Frameworks}
 
 NSubstitute er et isolation framework, som kan oprette fakes på baggrund af interfaces. I NSubstitute kan vi asserte på resultat af et funktionskald (Stubs) eller om en funktion i en mock er blevet kaldt med recieved.
+
+\subsubsection{Brug af NSubstitute}
+\begin{lstlisting}
+var obj = Substitute.For<IObj>();
+\end{lstlisting}
