@@ -21,42 +21,46 @@ Da vi ikke kan kontrollere disse externe dependancies, bruges fakes.
 	\item Brug \textit{dependency-injection}\footnote{Constructor- eller propertyinjection.}.
 \end{itemize}
 
-Interfaces for dependancies giver mulighed for at erstatte en implementering uden at fjerne den anden. Vis et eksempel med filsystem
-
-\subsection{Statebaserede tests og Interactionbaserede tests}
+\subsection{Test typer}
 Der findes to typer af Unit tests:
 
-\begin{itemize}
-	\item State-Based - Hvor vi tester om UUT er i det forventede state efter behandling. Fakes til denne type af test er en \textbf{STUB}.
-	\item Interaction-Based - Hvor vi tester om UUT har den ønskede adfærd efter behandling. Her kigges der på UUT's adfærd med dens dependencies. Fakes til denne type af test er en \textbf{MOCK}.
-\end{itemize}
+\paragraph{State-Based tests} vi tester om UUT er i den forventede state efter behandling. Fakes til denne type af test er en \textit{stub}. \\
 
-\subsection{Stubs}
-En stub er en kontrollerbar erstatning for en dependancy. Når denne bruges er det ikke nødvendigt at interagere direkte med den egentlige afhængighed.
-Stubbe eksisterer kun for at give UUT de dependancies den behøver for at fungere. Stubbe giver ikke mulighed for at teste hvordan UUT'en interagerer med dependancien, men stiller derimod simpel data til rådighed.
+\textit{''In a state-based test, the assertion is \textbf{ALWAYS} on the UUT, \textbf{NEVER} on the fake(s).}
+
+\paragraph{Interaction-Based} Hvor vi tester om UUT har den ønskede adfærd efter behandling. Her kigges der på UUT's adfærd med dens dependencies. Fakes til denne type af test er en \textit{mock}.\\
+
+\textit{''In a Interaction-based test, the assertion is \textbf{ALWAYS} on the mock, \textbf{NEVER} on the UUT.}
+
+\subsection{Fake typer}
+Om det er \textit{state-based} eller \textit{interaction-based test} vi laver så vil vi bruge forskellige typer af fakes.
+
+\subsubsection{Stubs}
+Stubbe eksisterer kun for at give UUT de dependancies den behøver for at fungere.
 Hvis en klasse Calculator er afhængig af en klasse der kan lave beregninger, kan der laves en stub af denne klasse, der blot returnerer en fastlagt værdi. 
 
-Procedure for stubbe:
+\todo{Continue from here, Mr. B.}
+
+\paragraph{Procedure for stubbe} Assert sker på UUT og \textit{ikke} på selve stubben. En stub kan derfor ikke være skyld i at en test fejler.
+
 \begin{itemize}
-	\item Arrange - Opsætning af UUT og dens dependancies.
-	\item Act - Stimuler UUT'en. Få den til at gøre det vi ønsker.
-	\item Assert - Assert på om vi får det ønskede resultat, altså om UUT's state er den ønskede.
+	\item \textbf{Arrange} - Opsætning af UUT og dens dependancies.
+	\item \textbf{Act} - Stimuler UUT'en. Få den til at gøre det vi ønsker.
+	\item \textbf{Assert} - Assert på om vi får det ønskede resultat, altså om UUT's state er den ønskede.
 \end{itemize}
 
-Bemærk at Assert sker på UUT og \textit{ikke} på selve stubben. En stub kan derfor ikke forårsage en fejlet test.
+%\begin{figure}
+%	\centering
+%	\includegraphics[width=0.7\linewidth]{figs/stubTest.PNG}
+%	\caption{Unit testing med stubbe.}
+%	\label{fig:stubTest}
+%\end{figure}
 
-\begin{figure}
-	\centering
-	\includegraphics[width=0.7\linewidth]{figs/stubTest.PNG}
-	\caption{Unit testing med stubbe.}
-	\label{fig:stubTest}
-\end{figure}
-
-Vi ønsker at lave en state baseret test på klassen A. Klassen A har en afhængighed Class B.
+For klassediagrammet på figur~\ref{fig:stubNoInterface} ønsker vi at lave en \textit{state-based test} på klassen A. Klassen har en afhængighed, Klassen B.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{figs/stubNoInterface.PNG}
+	\includegraphics[width=0.5\linewidth]{figs/stubNoInterface.PNG}
 	\caption{Afhængighed - DIP ikke opfyldt.}
 	\label{fig:stubNoInterface}
 \end{figure}
@@ -65,21 +69,17 @@ Brugen af et interface vil her give mening. Vi påfører DIP of får da:
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{figs/stubInterface.PNG}
+	\includegraphics[width=0.6\linewidth]{figs/stubInterface.PNG}
 	\caption{Klassediagram for brug af stub.}
 	\label{fig:stubInterface}
 \end{figure}
 
 Her laves en en stub af interfacet B, hvorefter man kan bruge stubben til at teste UUT i et kontrolleret miljø.
 
-\subsubsection{Constructor injection}
+\paragraph{Constructor injection}
 Stubbe handler om at teste stadier. Det kan da være en fordel at anvende constructor injection.
 
-\todo{eksempel på ctor injection ifbm. stubbe}
-
-\todo{Persketivér til ATM opgaven}
-
-\subsection{Mocks}
+\subsubsection{Mocks}
 Mocks relaterer sig til adfærdsbaserede tests, og ikke ændrer sig selv, men derimod andre. Der assertes derfor på en anden klasse end den selv.
 
 \begin{figure}[H]
