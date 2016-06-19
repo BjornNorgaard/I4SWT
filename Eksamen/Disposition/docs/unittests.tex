@@ -108,14 +108,62 @@ public class MyClassUnittest {
 %\end{figure}
 
 \subsection{Assertion models}
-Der findes to typiske måder at asserte på. Den ene kaldes den klassiske model og den anden kaldes Constraint baseret.
+Der findes to typiske måder at asserte på. Den ene kaldes den klassiske model og den anden kaldes Constraint baseret. I NUnit 3.0 er assertions primært skrevet med den contraint-baserede model, som tager et \textit{constaint object}, eksempelvis \textit{Is.EqualTo()} som argument.
 
-Den klassiske assert anvender AreEqual metoden. Denne tager to parametre, en værdi samt metoden som ønskes testet - her om den returnerer den korrekte værdi.
+\subsubsection{Classic assert model}
+
+Den klassiske assert anvender \textit{AreEqual} metoden. Denne tager to argumenter, en værdi samt metoden som ønskes testet - her om den returnerer den korrekte værdi.
+
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.45\linewidth]{figs/classicAssert.PNG}
-\caption{Classic Assert model}
+\includegraphics[width=0.4\linewidth]{figs/classicAssert.PNG}
+\caption{Classic assert model.}
 \label{fig:classicAssert}
 \end{figure}
+
+\subsubsection{Constraint-based assert model}
+I en constraint-based model anvendes \textit{Assert.That()}. Denne bruger den faktiske værdi og et constraint, som \textit{Is.EqualTo("assumed result")}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\linewidth]{figs/constraintAssert}
+\caption{Constraint-based assert model.}
+\label{fig:constraintassert}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
