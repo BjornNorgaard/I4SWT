@@ -110,5 +110,15 @@ NSubstitute er et isolation framework, som kan oprette fakes på baggrund af int
 
 \subsubsection{Brug af NSubstitute}
 \begin{lstlisting}
-var obj = Substitute.For<IObj>();
+// Create
+var calculator = Substitute.For<ICalculator>();
+
+//Return value
+calculator.Add(1,2).Returns(3)
+Assert.AreEqual(3, calculator.add(1,2));
+
+//Recieved calls
+calculator.Recieved().Add(1, Arg.Any<int>());
+calculator.DidNotRecieve().Add(2,2);
+
 \end{lstlisting}
