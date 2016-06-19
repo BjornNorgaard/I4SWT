@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculater", "Calculater\Calculater.csproj", "{900A0020-EBD3-498E-8B22-825C86EB1820}"
 EndProject
@@ -10,6 +10,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator.Test.Unit", "Calculator.Test.Unit\Calculator.Test.Unit.csproj", "{F8FE931E-4457-4F84-B00A-69715A08908C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator.Application", "Calculator.Application\Calculator.Application.csproj", "{A2E8D2CA-F2B0-4ACA-94ED-D362799F2CBB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoolCalculator", "CoolCalculator\CoolCalculator.csproj", "{31729263-4960-483C-AC43-375903A01D62}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoolCalculator.Test.Unit", "CoolCalculator.Test.Unit\CoolCalculator.Test.Unit.csproj", "{A1377575-23FA-4387-A547-CEA2D515F935}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{A2E8D2CA-F2B0-4ACA-94ED-D362799F2CBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2E8D2CA-F2B0-4ACA-94ED-D362799F2CBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2E8D2CA-F2B0-4ACA-94ED-D362799F2CBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31729263-4960-483C-AC43-375903A01D62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31729263-4960-483C-AC43-375903A01D62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31729263-4960-483C-AC43-375903A01D62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31729263-4960-483C-AC43-375903A01D62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1377575-23FA-4387-A547-CEA2D515F935}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1377575-23FA-4387-A547-CEA2D515F935}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1377575-23FA-4387-A547-CEA2D515F935}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1377575-23FA-4387-A547-CEA2D515F935}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

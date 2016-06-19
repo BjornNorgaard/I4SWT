@@ -1,5 +1,6 @@
 ﻿using System;
 using Calculator.Library;
+using NSubstitute;
 using NUnit.Framework;
 
 namespace Calculator.Test.Unit
@@ -8,11 +9,20 @@ namespace Calculator.Test.Unit
     public class CalculatorUnitTest
     {
         private ICalculator _uut;
+        private ISmartCalculater fakeSmartCalculater;
 
         [SetUp]
         public void Setup()
         {
-            _uut = new Library.Calculator();
+            fakeSmartCalculater = Substitute.For<ISmartCalculater>();
+            _uut = new Library.Calculator(fakeSmartCalculater);
+        }
+
+        [Test]
+        public void DerpTest()
+        {
+            _uut.Derp(1, 89);
+            fakeSmartCalculater.Received().Add(1, Arg.Any<int>());
         }
 
         [TestCase(1.5, 2, 3.5)]
