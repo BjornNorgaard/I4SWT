@@ -7,7 +7,7 @@ At teste ved at lave udskrifter i consolen er dumt, så nu laver vi unit tests. 
 	\item \textbf{System Under Test} - Det system man tester på.
 \end{itemize}
 
-\subsection{En god Unittest}
+\paragraph{En god Unittest}
 \begin{itemize}
 	\item Automatiseret og 'gentagelig'.
 	\item Skal køre hurtigt.
@@ -17,7 +17,6 @@ At teste ved at lave udskrifter i consolen er dumt, så nu laver vi unit tests. 
 \end{itemize}
 
 \subsection{Hvordan Unittester vi?}
-
 Vi bruger testframeworket NUnit, hvilket giver mulighed for:
 
 \begin{itemize}
@@ -25,6 +24,34 @@ Vi bruger testframeworket NUnit, hvilket giver mulighed for:
 	\item Setup og teardown, se Code listing~\ref{code:nunit}.
 	\item At nemt indsætte nye tests i systemet.
 \end{itemize}
+
+\paragraph{Opsætning af unittest} Når der skrives en Unittest, følger man typisk de tre A'er.
+
+\begin{enumerate}
+	\item Arrange - Instantiering af UUT objekt.
+	\item Act - Stimuler UUT til at gøre det vi ønsker - \textit{result = \_uut.Method()}.
+	\item Assert - Assertion på om vi får det forventede resultat. \textit{Assert.False(result)}.
+\end{enumerate}
+
+\subsubsection{NUnit attributter}
+NUnit bruger en række 'tags' som indikerer hvordan den skal udføre de skreve test. Nogle af disse er vist i tabel~\ref{tab:nunit}.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{ll}
+		\toprule
+		\rowcolor{Black!5} \textbf{Attribut}& 	\textbf{Beskrivelse}\\ \midrule
+		TestFixture	&	En klasse der indeholder automatiserede NUnit tests. \\
+		SetUp		&	Køres hver gang en test i samme TestFixture køres.\\
+		TearDown	&	Køres hver gang en test i samme TestFixture er afsluttet.\\
+		Test		&	En enkelt automatiseret test.\\
+		TestCase()	&	En test med parametre.\\ \bottomrule
+	\end{tabular}
+	\caption{NUnit's attributter (tags).}
+	\label{tab:nunit}
+\end{table}
+
+Yderligere er der nogle konventioner man følger når testmetoder skal navngives, demonstreret på linje 15 i Code listing~\ref{code:nunit}.
 
 \begin{lstlisting}[caption=NUnit eksempel på Setup og Teardown.,label=code:nunit]
 [TestFixture]
@@ -47,37 +74,8 @@ public class MyClassUnittest {
 }
 \end{lstlisting}
 
-\subsubsection{NUnit attributter}
-NUnit bruger en række 'tags' som indikerer hvordan den skal udføre de skreve test. Nogle af disse er vist i tabel~\ref{tab:nunit}.
-
-\begin{table}[H]
-	\centering
-	\begin{tabular}{ll}
-		\toprule
-		\rowcolor{Black!5} \textbf{Attribut}& 	\textbf{Beskrivelse}\\ \midrule
-		TestFixture	&	En klasse der indeholder automatiserede NUnit tests. \\
-		SetUp		&	Køres hver gang en test i samme TestFixture køres.\\
-		TearDown	&	Køres hver gang en test i samme TestFixture er afsluttet.\\
-		Test		&	En enkelt automatiseret test.\\
-		TestCase()	&	En test med parametre.\\ \bottomrule
-	\end{tabular}
-	\caption{NUnit's attributter (tags).}
-	\label{tab:nunit}
-\end{table}
-
-\subsubsection{Naming conventions}
-Der er nogle konventioner man følger når testmetoder skal navngives, demonstreret i Code listing~\ref{code:nunit} linje 15.
-
-Når der skrives en Unittest, følger man typisk de tre A'er.
-
-\begin{itemize}
-	\item Arrange - Instantiering af UUT objekt.
-	\item Act - Stimuler UUT til at gøre det vi ønsker - \textit{result = UUT.someMethod()}.
-	\item Assert - Assertion på om vi får det forventede resultat. \textit{Assert.False(result)}.
-\end{itemize}
-
-\subsubsection{Parametiserede tests}
-I NUnit er der mulighed for at at bruge parametiserede tests. Dette er nyttigt hvis man ønsker at køre samme test med flere forskellige parametre. I stedet for at bruge \textbf{Test} attributten, bruges \textbf{TestCase(param1, param2)} attrbutten.
+%\subsubsection{Parametiserede tests}
+%I NUnit er der mulighed for at at bruge parametiserede tests. Dette er nyttigt hvis man ønsker at køre samme test med flere forskellige parametre. I stedet for at bruge \textbf{Test} attributten, bruges \textbf{TestCase(arg1, arg2)} attributten.
 
 %\begin{figure}[H]
 %\centering
