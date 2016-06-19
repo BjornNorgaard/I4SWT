@@ -1,45 +1,47 @@
 \section{Integrationstest}
-Integrationstests udføres for at checke om de enkelte software moduler passer sammen. Helt konkret drejer det sig om at finde de komponenter der forårsager \textit{Intercomponent failures}. De fleste interoperability fejl findes ikke med komponent scope testing Det er vigtigt at teste dette før der testes i \textit{system scope}.\\
+Integrationstests udføres for at checke om diverse moduler virker sammen. Helt konkret drejer det sig om at finde de komponenter der forårsager \textit{intercomponent failures}. De fleste \textit{interoperability} fejl findes ikke med \textit{component scope testing} Det er vigtigt at teste dette før der testes i \textit{system scope}.\\
 
-I OO programmering kan integrationstest forgå løbende. Med dette menes at der kan foretages integrationstest for hver iteration. \\
-
-Måden hvorpå en integrationstest adskiller sig fra en unittest er ved at den ikke er konsistent og/eller har en eller flere \textit{rigtige} afhængigheder. En test der fx afhænger af DateTime, er ikke længere kosnistent idet tiden ændrer sig for hver test.
+Måden hvorpå en integrationstest adskiller sig fra en unittest er ved at den ikke er konsistent og/eller har en eller flere \textit{rigtige} afhængigheder. En test der f.eks. afhænger af \textit{DateTime}, er ikke længere konsistent idet tiden ændrer sig for hver test.
 
 \subsection{Forarbejde og strategi}
 
+Før man begynder at integrationsteste er der nogle ting som bør være opfyldt:
+
 \begin{itemize}
+	\item Unittests skal være færdige. Dette gælder for samtlige metoder.
+	\item Systemets dependancy tree skal være kendt!
 	\item Hvilke komponenter er i fokus?
 	\item I hvilken rækkefølge skal komponenterne testes?
-	\item Hvilken test design teknik skal bruge?
 \end{itemize}
-
-Før man begynder at integrationsteste er der nogle ting som man bør have opfyldt:
-
-\begin{itemize}
-	\item Unittests skal være færdige. Dette gælder for samtlige metoder!
-	\item Systemets dependancy tree skal være kendt! jf. ATM opgaven.
-	\item Integrationstesten er planlagt.
-\end{itemize}
-
-\subsection{Typer af integrationstest}
-Der findes flere typer af tilgange til at integrationsteste.
 
 \subsubsection{Dependancy trees}
-Dependancy trees er en måde at visualisere afhængighederne i et projekt. Det er vigtigt at have et overblik over sine dependancies når man skal planlægge integrationstest. På figur~\ref{fig:dependancyATM} vises et uddrag fra ATM opgavens dependancy tree.
-
-\subsubsection{Drivers}
-En driver er en klasse, eller et program der påtrykker testcases på den komponenten under test.
+Dependancy trees er en måde at visualisere afhængighederne i et projekt. Arve-heirakiet vises ikke. Det er vigtigt at have et overblik over sine dependancies når man skal planlægge integrationstest. På figur~\ref{fig:dependancyATM} vises et uddrag fra ATM opgavens dependancy tree.
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=0.78\linewidth]{figs/dependancyATM.PNG}
-\caption{Uddrag fra ATM's dependancy model}
-\label{fig:dependancyATM}
+	\centering
+	\includegraphics[width=0.78\linewidth]{figs/dependancyATM.PNG}
+	\caption{Uddrag fra ATM's dependancy model. Venstre side er toppen af træet.}
+	\label{fig:dependancyATM}
 \end{figure}
 
 Dependancy træet er opbygget så høj niveau modulerne ligger i den ene ende og lav niveau modulerne i den anden ende.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Drivers}
+
+Sæt at vi har to komponenter: A og B, som vist i figur~\ref{fig:driver}. Hvis A er færdig og skal testes, laver vi en stub for B. 
+Omvendt hvis B er færdig og A mangler, vil vi lave en \textit{driver} for A, som kan simulere et kald på B.
+
+Et eksempel på en driver i unittests kan være vores \textit{TextFixture} klasse, som laver kaldene på \textit{\_uut} under test.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\linewidth]{figs/driver}
+\caption{UML for driver og stubbe.}
+\label{fig:driver}
+\end{figure}
+
+\subsection{Typer af integrationstest}
+Der findes flere typer af tilgange til at integrationsteste.
 
 \subsubsection{Big Bang testing}
 I en \textit{Big Bang} integrationstest, sammensættes alle software komponenter, så det komplette system dannes. Herefter testes systemet.
