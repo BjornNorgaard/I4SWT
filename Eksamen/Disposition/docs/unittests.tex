@@ -65,22 +65,8 @@ NUnit bruger en række 'tags' som indikerer hvordan den skal udføre de skreve t
 	\label{tab:nunit}
 \end{table}
 
-%\paragraph{[TestFixture]} Indikerer en klasse der indeholder automatiserede NUnit tests. 
-%\paragraph{[Test]} Indikerer en enkelt automatiseret test.
-%\paragraph{[TestCase]} Indikerer en test med parametre.
-%\paragraph{[SetUp]} Indikerer en SetUp metode. Køres hver gang en test i samme TestFixture køres.
-%\paragraph{[TearDown]} Indikerer en TearDown metode. Køres hver gang en test i samme TestFixture er afsluttet. Bruges til at nulstille.
-
 \subsubsection{Naming conventions}
-Der er nogle konventioner man følger når testmetoder skal navngives, demonstreret i Code listing~\ref{code:namingconvention}.
-
-\begin{lstlisting}[caption=Eksempel på navngivnings konvention for test.,label=code:namingconvention]
-[Test]
-public void NameOfMethod_FunctionalityToBetested_ExpectedOutcome()
-{
-	// assert something here...
-}
-\end{lstlisting}
+Der er nogle konventioner man følger når testmetoder skal navngives, demonstreret i Code listing~\ref{code:nunit} linje 15.
 
 Når der skrives en Unittest, følger man typisk de tre A'er.
 
