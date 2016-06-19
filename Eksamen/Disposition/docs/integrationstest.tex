@@ -35,145 +35,172 @@ Et eksempel på en driver i unittests kan være vores \textit{TextFixture} klass
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.7\linewidth]{figs/driver}
+\includegraphics[width=0.6\linewidth]{figs/driver}
 \caption{UML for driver og stubbe.}
 \label{fig:driver}
 \end{figure}
 
 \subsection{Typer af integrationstest}
-Der findes flere typer af tilgange til at integrationsteste.
+Der findes flere måder at integrationsteste på.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Big Bang testing}
-I en \textit{Big Bang} integrationstest, sammensættes alle software komponenter, så det komplette system dannes. Herefter testes systemet.
+I en \textit{Big Bang} integrationstest, sammensættes alle komponenter, så det komplette system dannes. Herefter testes systemet.
 
-\paragraph{Fordele Big Bang testing}
+\paragraph{Fordele}
 \begin{itemize}
 	\item Man slipper for at planlægge sin test
 	\item Nemt at bruge i mindre systemer
 \end{itemize}
 
-\paragraph{Ulemper ved Big Bang testing}
+\paragraph{Ulemper}
 Der er en del ulemper ved denne integratoinstest model.
 
 \begin{itemize}
 	\item Man finder først fejlene når alle komponenter sættes sammen.
-	\item Det er svært at isolere de fundne fejl.
-	\item Der er stor sansynlighed for at misse kritiske fejl, som senere kan vise sig.
-	\item Det er svært at dække alle test scenarier uden at misse enkelte.
-	\item Bugfixing er last-minute og er derfor ofte af dårlig kvalitet.
+	\item Svært at isolere de fundne fejl.
+	\item Stor sansynlighed for at misse kritiske fejl, som senere kan vise sig.
+	\item Svært at dække alle test scenarier uden at misse enkelte.
+	\item Bug-fixing er last-minute og er derfor ofte af dårlig kvalitet.
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Bottom-Up testing}
+Starter i bunden af dependancy træet - nederste lag testes først.
+
+\paragraph{Fordele}
 
 \begin{itemize}
-	\item Starter i bunden af dependancy træet - nederste lag testes først.
+	\item Ingen eller få stubbe, da vi skal ikke fake dependancies.
 \end{itemize}
 
-\begin{figure}
-\centering
-\includegraphics[width=0.7\linewidth]{figs/bottomUp.PNG}
-\caption{Illustration af Bottom-Up testing.}
-\label{fig:bottomUp}
+\paragraph{Ulemper}
+
+\begin{itemize}
+	\item Kræver mange drivere.
+	\item Udsætter test af kritiske kontrol interfaces (komponenter højere oppe i træet).
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{figs/bottomUp.PNG}
+	\caption{Illustration af Bottom-Up testing.}
+	\label{fig:bottomUp}
 \end{figure}
-
-\paragraph{Fordele ved Bottom-Up testing}
-
-\begin{itemize}
-	\item Ingen eller få stubbe (Vi skal ikke fake dependancies).
-	\item Let at dække interfaces på alle niveauer.
-\end{itemize}
-
-\paragraph{Ulemper ved Bottom-Up testing}
-
-\begin{itemize}
-	\item Kræver mange Drivere.
-	\item Udsætter tests af kritiske kontrol interfaces.
-\end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Top-Down testing}
+Starter i toppen af dependancy træet - øverste lag testes først.
+
+\paragraph{Fordele}
 
 \begin{itemize}
-	\item Starter i toppen af dependancy træet - øverste lag testes først.
-\end{itemize}
-
-\begin{figure}
-\centering
-\includegraphics[width=0.7\linewidth]{figs/topDown.PNG}
-\caption{Illustration af Top-Down testing.}
-\label{fig:topDown}
-\end{figure}
-
-\paragraph{Fordele ved Top-Down testing}
-
-\begin{itemize}
-	\item Få Drivere skal skrives.
+	\item Få drivere.
+	\item Mange stubbe, hvilket er OK med et isolation framework.
 	\item Man udsætter ikke testing af kontrol komponenter.
 	\item God til at arbejde samtidigt på HW og SW.
 \end{itemize}
 
-\paragraph{Ulemper ved Top-Down testing}
+\paragraph{Ulemper}
 
 \begin{itemize}
 	\item Bruger mange stubbe. Et isolation framework gør det dog lettere.
 	\item Svært at repræsentere low-level interfaces i toppen. 
 \end{itemize}
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{figs/topDown.PNG}
+	\caption{Illustration af Top-Down testing.}
+	\label{fig:topDown}
+\end{figure}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Collaboration testing}
-Der vælges en "vej" gennem dependancy træet, fra top til bund. Eksempelvis en hel Useer Story eller use case.
+Der vælges en 'vej' gennem dependancy træet, fra top til bund. Eksempelvis en \textit{User Story} eller \textit{Use Case}. I collaboration test tager man en "gren" af gangen i dependency træet.
 
-
-\begin{itemize}
-	\item I collaboration test tager man en "gren" ad gangen i dependency træet.
-\end{itemize}
-
-\begin{figure}
-\centering
-\includegraphics[width=0.7\linewidth]{figs/collaborationTesting.PNG}
-\caption{Illustration af Collaboration testing.}
-\label{fig:collaborationTesting}
-\end{figure}
-
-\paragraph{Fordele ved Collaboration testing}
+\paragraph{Fordele}
 
 \begin{itemize}
 	\item Intuitivt - Kan følge use cases/user stories.
-	\item Specielt brugbart et højniveaus system scope test.
+	\item Specielt brugbart for et højniveau system scope test.
 \end{itemize}
 
-\paragraph{Ulemper ved Collaborationp testing}
+\paragraph{Ulemper}
 
 \begin{itemize}
-	\item Testede komponenter testes ikke enkeltvis.
+	\item Testede sub-components testes ikke enkeltvis.
 \end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{figs/collaborationTesting.PNG}
+	\caption{Illustration af Collaboration testing.}
+	\label{fig:collaborationTesting}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Sandwich testing}
+Top-down og Bottom-up kombineres.
 
-Top-down og Bottom-up kombineres
-
-\begin{figure}
-\centering
-\includegraphics[width=0.7\linewidth]{figs/sandwich.PNG}
-\caption{Illustration af Sandwich testing.}
-\label{fig:sandwich}
-\end{figure}
-
-\paragraph{Fordele ved Sandwich testing}
+\paragraph{Fordele}
 
 \begin{itemize}
-	\item Man kan bruge både BU og TD hvis det giver mening.
-	\item Mange af ulemperne ved BU og TD fjernes - fx det at rpeæsentere low level moduler top-down, bliver lettere hvis nogen af tests er udført i bunden først.
+	\item Man kan bruge både Bottom-Top og Top-Down hvis det giver mening.
+	\item Mange af ulemperne ved Bottom-Top og Top-Down fjernes.
+	
+	\begin{itemize}
+		\item Fordelen ved Buttom-Up er at bugs er lettere at finde.
+		\item Ved Top-Down er det nemmere at finde manglede forbindelser mellem komponenter.
+	\end{itemize}
+	
 \end{itemize}
 
-\paragraph{Ulemper ved Sandwich testing}
+\paragraph{Ulemper}
 
 \begin{itemize}
 	\item Kræver en stor del planlægning.
+	\item Kan ikke anvendes på små systemer.
 \end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{figs/sandwich.PNG}
+	\caption{Illustration af Sandwich testing.}
+	\label{fig:sandwich}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
