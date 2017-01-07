@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NSubstitute;
+﻿using NSubstitute;
 using NUnit.Framework;
 
 namespace CoolCalculator.Test.Unit
@@ -13,7 +8,7 @@ namespace CoolCalculator.Test.Unit
     {
         Calculator _uut;
         private IAdditionCalculator _fakeAdditionCalculator;
-        
+
         [SetUp]
         public void Setup()
         {

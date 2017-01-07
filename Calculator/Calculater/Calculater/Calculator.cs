@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Security.Cryptography.X509Certificates;
 
-namespace Calculator.Library
+namespace Calculater
 {
     public class Calculator : ICalculator
     {

@@ -1,5 +1,5 @@
 ﻿using System;
-using Calculator.Library;
+using Calculater;
 using NSubstitute;
 using NUnit.Framework;
 
@@ -15,7 +15,7 @@ namespace Calculator.Test.Unit
         public void Setup()
         {
             fakeSmartCalculater = Substitute.For<ISmartCalculater>();
-            _uut = new Library.Calculator(fakeSmartCalculater);
+            _uut = new Calculater.Calculator(fakeSmartCalculater);
         }
 
         [Test]

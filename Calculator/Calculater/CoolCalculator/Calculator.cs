@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CoolCalculator
+﻿namespace CoolCalculator
 {
     public class Calculator
     {
@@ -19,10 +13,5 @@ namespace CoolCalculator
         {
             return _additionCalculator.Add(a, b);
         }
-    }
-
-    public interface IAdditionCalculator
-    {
-        int Add(int a, int b);
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
-using Calculator.Library;
+using Calculater;
 
-namespace Calculator.Manual.Test
+namespace CalculatorTest
 {
     public class CalculatorTest
     {
